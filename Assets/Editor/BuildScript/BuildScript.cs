@@ -7,7 +7,7 @@ public class BuildScript {
 	private static int minor_version = 1;
 
 	private static string build_dir = "Build";
-	private static string app_name = "Necromancer";
+	private static string app_name = "TestProject";
 	private static string app_build_name = app_name + "." + major_version + "." + minor_version;
 
 	private static string win64_dir = build_dir + "/Windows_64/" + app_build_name + ".exe";
@@ -68,7 +68,7 @@ public class BuildScript {
 
 		BuildPlayerOptions buildPlayerOptions = new BuildPlayerOptions();
 		buildPlayerOptions.scenes = scenes;
-		buildPlayerOptions.locationPathName = "Build/Windows_64/TestGame.exe";
+		buildPlayerOptions.locationPathName = win64_dir;
 		buildPlayerOptions.options = BuildOptions.None;
 		buildPlayerOptions.target = BuildTarget.StandaloneWindows64;
 
@@ -81,7 +81,7 @@ public class BuildScript {
 
 		string absolutePath = Application.dataPath;
 		string path = absolutePath.Remove (absolutePath.Length - 6);
-		path += "Build/Windows_64/TestGame.exe";
+		path += win64_dir;
 
 		Process proc = new Process();
 		proc.StartInfo.FileName = path;
