@@ -16,8 +16,7 @@ public class BuildScript {
 	private static string android_dir = build_dir + "/Android/" + app_build_name + ".apk";
 
 	private static string[] scenes = { 
-		"Assets/Scenes/Tutorial.unity", 
-		"Assets/Scenes/dungeon.unity"
+		"Assets/TestScene.unity"
 	};
 
 	private static BuildPlayerOptions buildPlayerOptions = new BuildPlayerOptions();
@@ -64,24 +63,21 @@ public class BuildScript {
 
 	[MenuItem("Build/Build Windows")]
 	static void BuildWindows64() {
-		string[] scenes = {"Assets/TestScene.unity"};
-
-		BuildPlayerOptions buildPlayerOptions = new BuildPlayerOptions();
-		buildPlayerOptions.scenes = scenes;
 		buildPlayerOptions.locationPathName = win64_dir;
-		buildPlayerOptions.options = BuildOptions.None;
 		buildPlayerOptions.target = BuildTarget.StandaloneWindows64;
-
 		BuildPipeline.BuildPlayer (buildPlayerOptions);
 	}
 
 	[MenuItem("Build/Build Windows and Run")]
 	static void BuildWindows64AndRun() {
 		BuildWindows64 ();
+		RunBuild (win64_dir);
+	}
 
+	static void RunBuild(string directory) {
 		string absolutePath = Application.dataPath;
 		string path = absolutePath.Remove (absolutePath.Length - 6);
-		path += win64_dir;
+		path += directory;
 
 		Process proc = new Process();
 		proc.StartInfo.FileName = path;
