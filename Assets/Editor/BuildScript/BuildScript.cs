@@ -32,7 +32,7 @@ public class BuildScript {
 		FileUtil.DeleteFileOrDirectory (build_dir);
 	}
 
-//	[MenuItem("Build/Build All")]
+	[MenuItem("Build/Build All")]
 	static void BuildAll() {
 		DeleteBuildDir ();
 		BuildWindows64 ();
@@ -41,21 +41,21 @@ public class BuildScript {
 		BuildAndroid ();
 	}
 
-//	[MenuItem("Build/Build OSX")]
+	[MenuItem("Build/Build OSX")]
 	static void BuildMac64() {
 		buildPlayerOptions.locationPathName = mac64_dir;
 		buildPlayerOptions.target = BuildTarget.StandaloneOSXIntel64;
 		BuildPipeline.BuildPlayer (buildPlayerOptions);
 	}
 
-//	[MenuItem("Build/Build Android")]
+	[MenuItem("Build/Build Android")]
 	static void BuildAndroid() {
 		buildPlayerOptions.locationPathName = android_dir;
 		buildPlayerOptions.target = BuildTarget.Android;
 		BuildPipeline.BuildPlayer (buildPlayerOptions);
 	}
 
-//	[MenuItem("Build/Build WebGL")]
+	[MenuItem("Build/Build WebGL")]
 	static void BuildWebGL() {
 		buildPlayerOptions.locationPathName = webgl_dir;
 		buildPlayerOptions.target = BuildTarget.WebGL;
